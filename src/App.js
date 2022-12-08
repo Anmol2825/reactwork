@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+// import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+// import Page1 from "./Page1";
+// import Page2 from "./Page2";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// function App() {
+//   return (
+//     <Router>
+//       <Page1/>
+//       <Routes>
+//         <Route exact path="/" component={Page1}/>
+//         <Route path="/page2" component={Page2}/>
+//       </Routes>
+//     </Router>
+//   );
+// }
+import React from "react";
+  //  import ReactDOM from "react-dom";
+   import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-export default App;
+   import Page1 from "./Page1";
+   import Page2 from "./Page2";
+   function Home() {
+      const navigate = useNavigate();
+    
+      const handleSubmit = event => {
+        event.preventDefault();
+    
+        // 👇️ redirect to /contacts
+        navigate('/Page2');
+      };
+      return (
+        <form onSubmit={handleSubmit}>
+          <input />
+          <button type="submit">Submit</button>
+        </form>
+      );
+   }
+    function App(){
+      return(
+        <BrowserRouter>
+              <Page1/>
+       <Routes>
+        <Route exact path="/" component={Page1} />
+        <Route path="/page2" component={<Home />} />
+      </Routes>
+      </BrowserRouter>
+      );
+    }
+    export default App; 
